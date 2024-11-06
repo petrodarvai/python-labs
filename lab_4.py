@@ -34,7 +34,7 @@ class Film:
         return f"Name: {self.__name}, Duration: {self.__duration}, Numbers of reviews: {self.__numb_of_reviews}, Mark on IDBM: {self.mark_on_IDBM}, Type:{self.type}"
         
     def __del__(self):
-        print(f"Film: {self.__name} delated")
+        print(f"Film: {self.__name} deleted")
         
 def main():
     film_1 = Film( "The Shawshank Redemption", 142, 900000, 9.3, "epic" )
