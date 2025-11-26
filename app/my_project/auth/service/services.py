@@ -211,6 +211,25 @@ class StaffService:
         s = Staff.query.get(staff_id)
         if not s:
             return False
+        
+        # 1. Видаляємо записи в MaintenanceLog
+        # (тут точно є StaffID, бо була помилка IntegrityError)
+        maintenance_logs = MaintenanceLog.query.filter_by(StaffID=staff_id).all()
+        for log in maintenance_logs:
+            db.session.delete(log)
+
+        # 2. Видаляємо записи в UsageLog
+        # (тут теж є StaffID, бо була помилка)
+        usage_logs = UsageLog.query.filter_by(StaffID=staff_id).all()
+        for log in usage_logs:
+            db.session.delete(log)
+            
+        # 3. LaserCutterLog НЕ ЧІПАЄМО
+        # (Там немає колонки StaffID, тому що лазером користуються студенти)
+        # laser_logs = LaserCutterLog.query.filter_by(StaffID=staff_id).all()
+        # for log in laser_logs:
+        #     db.session.delete(log)
+
         db.session.delete(s)
         db.session.commit()
         return True

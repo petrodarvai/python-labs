@@ -29,9 +29,13 @@ def create_app():
     # Регіструємо маршрути
     from app.my_project.auth.route.routes import auth_bp
     app.register_blueprint(auth_bp, url_prefix='/api')
+    # Додайте це в run.py перед if __name__ == '__main__':
 
+    @app.route('/')
+    def index():
+        return "Привіт! Сервер працює, але це API. Використовуйте /staff або /student"
     return app
-
+    
 if __name__ == '__main__':
     app = create_app()
     app.run(host='0.0.0.0', port=5000)
