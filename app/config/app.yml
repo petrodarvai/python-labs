@@ -1,0 +1,8 @@
+database:
+  dialect: mysql         # Тип бази даних (не міняй, якщо у тебе MySQL)
+  driver: pymysql        # Драйвер для Python (не міняй, якщо використовуєш PyMySQL)
+  username: root         # Логін до твоєї бази
+  password: CEH4AMIX2007     # Пароль до твоєї бази
+  host: localhost        # Хост, де запущена база. Якщо локально — localhost, якщо на сервері — IP або домен
+  port: 3306             # Порт MySQL (за замовчуванням 3306)
+  database: fablabdb     # Назва твоєї бази даних
